@@ -17,28 +17,30 @@ function setup(){
 
 function draw(){
     drawBackground();
-    drawCrosshair();
 
-    for (let i = 0; i < NUMBUILDINGS; i++){
+    for (let i = buildings.length - 1; i >= 0; i--){
         buildings[i].show();
     }
+
+    for (let i = explosions.length - 1; i >= 0; i--){
+        explosions[i].show();
+    }
+
+    drawCrosshair();
 }
 
 function mouseClicked(){
-    let m = new Object();
-    m.x = mouseX;
-    m.y = mouseY;
-    
-    for (let i = 0; i < NUMBUILDINGS; i++){
-        buildings[i].checkHit(m);
-    }
+    explosions.push(new Explosion(mouseX, mouseY));
 }
 
 function drawBackground(){
-  background('Navy');
-  fill('OliveDrab');
+  background('RoyalBlue');
 
+  fill('OliveDrab');
   rect(0, height - GROUNDHEIGHT, width, GROUNDHEIGHT);
+
+  fill('Yellow');
+  ellipse(50, 50, 50);
 }
 
 function drawCrosshair(){
