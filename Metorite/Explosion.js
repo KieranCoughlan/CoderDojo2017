@@ -1,7 +1,6 @@
-class Explosion{
-    constructor(x, y){
-        this.x = x;
-        this.y = y;
+class Explosion {
+    constructor(x, y) {
+        this.pos = createVector(x, y);
         this.length = 100;
         this.count = 0;
         this.minRadius = 10;
@@ -11,9 +10,9 @@ class Explosion{
         this.endColour = color('white');
     }
 
-    show(){
+    show() {
         if (this.count > this.length)
-          return;
+            return;
 
         let progress = this.count / this.length;
 
@@ -21,14 +20,17 @@ class Explosion{
         fill(fillColour);
 
         this.radius = lerp(this.minRadius, this.maxRadius, progress);
-        ellipse(this.x, this.y, this.radius);
+        ellipse(this.pos.x, this.pos.y, this.radius);
 
         this.count++;
     }
 
-    checkHit(meteorite){
-        let distance = dist(this.x, this.y, meteorite.x, meteorite.y);
-        
+    checkHit(meteorite) {
+        if (this.count > this.length)
+            return false;
+
+        let distance = this.pos.dist(meteorite.pos);
+
         return distance <= this.radius;
     }
 }
