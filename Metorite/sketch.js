@@ -13,6 +13,8 @@ function setup(){
     for (let i = 0; i < NUMBUILDINGS; i++){
         buildings.push(new Building());
     }
+
+    meteorites.push(new Meteorite(buildings[0], 1));
 }
 
 function draw(){
@@ -24,6 +26,12 @@ function draw(){
 
     for (let i = explosions.length - 1; i >= 0; i--){
         explosions[i].show();
+    }
+
+    
+    for (let i = meteorites.length - 1; i >= 0; i--){
+        meteorites[i].move();
+        meteorites[i].show();
     }
 
     drawCrosshair();
