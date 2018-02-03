@@ -46,9 +46,5 @@ class Cell {
 
     addNeighbour(other) {
         this.neighbours.push(other);
-
-        if (other.isBomb) {
-            this.surroundingBombs++;
-        }
     }
 }
