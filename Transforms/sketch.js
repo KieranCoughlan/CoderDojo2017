@@ -1,22 +1,23 @@
-function setup(){
+let sun;
+let ground;
+let tree;
+
+function setup() {
     createCanvas(800, 600);
-    angleMode(DEGREES);
-}
+    background('black');
 
-function draw(){
-    background(0);
+    ground = new SnowyGround(400);
+    sun = new Sun(30, 30);
+    tree = new Tree(300, 450);
 
-    translate(100, 100);
-    rectMode(CENTER);
-    fill('yellow');
-    rect(0, 0, 30, 30);
-    translate(10, -10);
-    rotate(-30);
-    translate(20, 0);
-    rect(0, 0, 40, 10);
-    translate(20, 0);
-    rotate(60);
-    translate(20, 0);
-    rect(0, 0, 40, 10);
+    tree.show();
+    //ground.show();
+    //sun.show();
+
 
 }
+
+function draw() {
+
+}
+
