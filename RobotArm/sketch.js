@@ -1,7 +1,7 @@
 let bodypos;
 
-let arm0angle = 0;
-let arm1angle = 0;
+let upperangle = 0;
+let lowerangle = 0;
 
 function setup(){
     createCanvas(800, 600);
@@ -9,7 +9,6 @@ function setup(){
     rectMode(CENTER);
 
     bodypos = createVector(width / 2, height - 100);
-
 }
 
 function draw(){
@@ -26,30 +25,30 @@ function drawBody(){
   translate(bodypos.x, bodypos.y);
   rect(0, 0, 50, 50);
 
-  drawArm0();
+  drawUpperArm();
 
   pop();
 }
 
-function drawArm0(){
+function drawUpperArm(){
     push();
 
     fill('green');
     translate(20, -20);
-    rotate(arm0angle);
+    rotate(upperangle);
     rect(25, 0, 50, 10);
     
-    drawArm1();
+    drawLowerArm();
 
     pop();
 }
 
-function drawArm1(){
+function drawLowerArm(){
     push();
 
     fill('blue');
     translate(50, 0);
-    rotate(arm1angle);
+    rotate(lowerangle);
     rect(25, 0, 50, 10);
 
     pop();
@@ -65,18 +64,18 @@ function handleInput(){
     }
     
     if (keyIsDown(UP_ARROW)){
-        arm0angle -= 5;
+        upperangle -= 5;
     }
     
     if (keyIsDown(DOWN_ARROW)){
-        arm0angle += 5;
+        upperangle += 5;
     }
 
     if (keyIsDown(90)){
-        arm1angle -= 5;
+        lowerangle -= 5;
     }
     
     if (keyIsDown(88)){
-        arm1angle += 5;
+        lowerangle += 5;
     }
 }
