@@ -51,7 +51,10 @@ class Continent {
             // Double up the vertices
             this.doubleVertices();
 
-            // Displace each one. Effectively we half the displacement each itteration.
+            // Displace each vertex. The displacment we actually use for each pass is
+            // effectively we halved each time. First full displacement, then half, 
+            // then quarter, then eighth, etc.
+            // If you do this don't the shape doesn't look like land (remove the "/ pow(2.0, i)" below to see)
             this.displaceVertices(this.displacement / pow(2.0, i));
         }
     }
